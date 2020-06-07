@@ -30,8 +30,19 @@ tudo segue uma estrutura e patterns pré-definidos. Não lembro direito, mas acr
 
 server.ts importa path, routes e error (validação de 'celebrate', ver mais tarde).
 
-Aqui o principal é a declaração da constante app que recebe a função express();
+Aqui o principal é a declaração da constante app que recebe a função express():
+
 `const app = express()`
+
+Depois de definir a constante, faz-se o uso de vários middlewares à função express, do tipo:
+
+app.use("nome do middleware").
+
+Há middleware para CORS, express.json, routes (aqui o express faz uso das rotas que foram definidas em outro arquivo), dos arquivos na pasta /uploads e dos erros (validação de 'celebrate').
+
+Após todos esses middlewares serem chamados (é possível chamar vários outros, pois por definição, express é um framework web de middlewares e rotas - https://expressjs.com/en/guide/using-middleware.html), chama-se a função listen na constante app, passando o número da porta que o app express irá escutar em localhost: 
+
+`app.listen(3333);`
 
 ### web
 
